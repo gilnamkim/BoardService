@@ -1,5 +1,9 @@
 # 새로운 게시판서비스
 
+## src04 - BoardDTO 작성
+ - 기본요소를 정의하는 BoardDTO 생성
+ - BoardDTO에 getter, setter 생성
+
 ## src03 - Test Sources 작성
  - src/test/java폴더의 com.boardService 패키지의 BoardServiceApplicationTests.java 내용 작성
  - JUnit으로 실행 후 정상작동하는지 확인
