@@ -1,6 +1,11 @@
 # 새로운 게시판서비스
 
+## src05 - BoardMapper 작성
+ - com.boardService.mapper 패키지 생성
+ - SQL쿼리를 호출할 메서드의 모음인 BoardMapper 인터페이스 생성
+
 ## src04 - BoardDTO 작성
+ - com.boardService.domain 패키지 생성
  - 기본요소를 정의하는 BoardDTO 생성
  - BoardDTO에 getter, setter 생성
 
