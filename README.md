@@ -1,5 +1,7 @@
 # 새로운 게시판서비스
 
+## src02 -
+
 ## src01 - application.properties 설정
 	- jdbc-url / 데이터베이스의 주소
 	- username / MySQL을 설치하는 과정에서 입력했던 아이디
