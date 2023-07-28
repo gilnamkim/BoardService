@@ -1,5 +1,9 @@
 # 새로운 게시판서비스
 
+## src06 - BoardMapper.xml 작성
+ - src/main/resources 폴더에 mapper 패키지 생성
+ - SQL쿼리문을 수행할 .xml파일 작성
+ 
 ## src05 - BoardMapper 작성
  - com.boardService.mapper 패키지 생성
  - SQL쿼리를 호출할 메서드의 모음인 BoardMapper 인터페이스 생성
