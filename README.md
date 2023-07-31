@@ -1,5 +1,10 @@
 # 새로운 게시판서비스
 
+## src07 - DBConfiguration 수정
+ - DBConfiguration이 XML Mapper에 접근할 수 있는 경로 지정 (.setMapperLocations())
+ - 클래스 패키지 경로 지정 (.setTypeAliasesPackage())
+ - mybatis.configuration으로 시작하는 모든 설정을 객체로 등록
+
 ## src06 - BoardMapper.xml 작성
  - src/main/resources 폴더에 mapper 패키지 생성
  - SQL쿼리문을 수행할 .xml파일 작성
