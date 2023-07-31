@@ -1,5 +1,9 @@
 # 새로운 게시판서비스
 
+## src14 - 컨트롤러 처리
+ - URL로 GET요청이 들어오면 BoardService으로 로직을 수행
+ - boardService/write 뷰 템플릿을 반환하여 클라이언트에게 보여주는 역할을 수행
+
 ## src13 - 서비스 영역 처리
  - MapperTests에서 잘 작동을 하였으니 이제 메인에서 각 메서드를 구현한다
  - service 인터페이스를 만든 후
