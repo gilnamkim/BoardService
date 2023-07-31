@@ -1,5 +1,10 @@
 # 새로운 게시판서비스
 
+## src13 - 서비스 영역 처리
+ - MapperTests에서 잘 작동을 하였으니 이제 메인에서 각 메서드를 구현한다
+ - service 인터페이스를 만든 후
+ - 인터페이스를 상속받아 메서드를 구현한다
+
 ## src12 - 게시글 리스트출력 test
   - MapperTests에 목록출력용 메서드 testSelectList() 작성
  
