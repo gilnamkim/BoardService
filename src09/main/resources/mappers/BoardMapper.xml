@@ -61,7 +61,7 @@
 				update_time = NOW()
 			,	title = #{title}
 			,	content = #{content}
-			,	writer = #{writer}
+			,	writer = #[writer}
 			,	notice_yn = IFNULL(#{noticeYn}, 'N')
 			,	secret_yn = IFNULL(#{secretYn}, 'N')
 		WHERE

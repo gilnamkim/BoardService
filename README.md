@@ -1,5 +1,9 @@
 # 새로운 게시판서비스
 
+## src10 - 게시글 수정 test
+  - MapperTests에 수정용 메서드 testOfUpdate() 작성
+  - setIdx값까지 넘겨줘야 해당 idx의 데이터가 덮어씌워진다
+
 ## src09 - 게시글 조회 test
  - MapperTests에 조회용 메서드 testOfSelectDetail() 작성
  - Jackson 라이브러리는 객체를 넘겨주면 JSON 문자열로 바꿔주는 기능을 수행한다

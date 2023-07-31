@@ -46,29 +46,4 @@ class MapperTests {
 			e.printStackTrace();
 		}
 	}
-	
-	@Test
-	public void testOfUpdate() {
-		BoardDTO params = new BoardDTO();
-		params.setTitle("1번 제목 수정");
-		params.setContent("1번 내용 수정");
-		params.setWriter("홍길동");
-		params.setIdx((long) 1);
-		
-		// result 는 쿼리가 실행된 횟수가 저장된다. 메서드한번 호출에 쿼리 1회 실행
-		int result = boardMapper.updateBoard(params);
-		System.out.println(result);
-
-		if(result == 1) {
-			BoardDTO board = boardMapper.selectBoardDetail((long) 1);
-			try {
-				String boardJson = new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(board);
-				System.out.println("=====================================");
-				System.out.println(boardJson);
-				System.out.println("=====================================");
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 }
