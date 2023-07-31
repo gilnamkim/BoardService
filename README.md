@@ -1,5 +1,13 @@
 # 새로운 게시판서비스
 
+## src09 - 게시글 조회 test
+ - MapperTests에 조회용 메서드 testOfSelectDetail() 작성
+ - Jackson 라이브러리는 객체를 넘겨주면 JSON 문자열로 바꿔주는 기능을 수행한다
+
+## src08 - 게시글 등록 test
+ - test용 MapperTests 작성
+ - 파일 실행 후 DB확인
+
 ## src07 - DBConfiguration 수정
  - DBConfiguration이 XML Mapper에 접근할 수 있는 경로 지정 (.setMapperLocations())
  - 클래스 패키지 경로 지정 (.setTypeAliasesPackage())
