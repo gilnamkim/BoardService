@@ -1,5 +1,8 @@
 # 새로운 게시판서비스
 
+## src12 - 게시글 리스트출력 test
+  - MapperTests에 목록출력용 메서드 testSelectList() 작성
+ 
 ## src11 - 게시글 삭제 test
   - MapperTests에 삭제용 메서드 testOfDelete() 작성
   - delete_yn을 'Y'로 바꿔줌으로써 데이터는 남아있지만 조회는 할 수 없는 조건으로 만들어 준다
