@@ -1,5 +1,9 @@
 # 새로운 게시판서비스
 
+## src17 - bootstrap 적용
+ - header.html, body.html 작성
+ - basic.html을 생성하여 th:fragment 속성을 사용하여 동적으로 처리
+
 ## src16 - Model 인터페이스 활용
  - model 인터페이스를 활용하여 model객체에 데이터를 매핑하여 html에 전달
  - thymeleaf라이브러리를 활용하여 컨트롤러에서 받은 model 데이터에 접근한다
