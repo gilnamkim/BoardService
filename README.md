@@ -1,5 +1,14 @@
 # 새로운 게시판서비스
 
+## src15 - 화면 처리
+ - write.html을 추가한 후 어플리케이션 실행
+ - http://localhost:8080/boardService/write.do 를 입력하면 write.html 화면이 나와야 한다
+ 
+## src15-1 에러발생
+ - URL을 잘못입력하면 컨트롤러에서 요청에 매칭되는 명령이 없기때문에 404에러가 발생
+ - 실수로 'write.html'을 'writer.html'로 파일을 만들었다
+ - openBoardWrite의 리턴값이 'boardService/write'인데 write.html 파일이 없으니 에러가 발생
+
 ## src14 - 컨트롤러 처리
  - URL로 GET요청이 들어오면 BoardService으로 로직을 수행
  - boardService/write 뷰 템플릿을 반환하여 클라이언트에게 보여주는 역할을 수행
@@ -64,16 +73,12 @@
 <폴더구조>
 
 ```
-	src/
-		main/
-			java/
-				자바 소스파일(.java)을 두는 폴더
-			resources
-				자바 프로그램 설정파일(.xml, .properties 등)을 두는 폴더
-		test/
-			java/
-				테스트 관련 자바 소스파일을 두는 폴더
-			resources
-				테스트 관련 설정파일 두는 폴더
+src/
+	main/
+		java/자바 소스파일(.java)을 두는 폴더
+		resources/자바 프로그램 설정파일(.xml, .properties 등)을 두는 폴더
+	test/
+		java/테스트 관련 자바 소스파일을 두는 폴더
+		resources/테스트 관련 설정파일 두는 폴더
 
 ```
