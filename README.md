@@ -1,5 +1,11 @@
 # 새로운 게시판서비스
 
+## src22 - 공통컨트롤러 생성
+ - 사용자부터 받은 입력값에 따라 메시지와 리다이렉트를 처리하는 UiUtils를 작성
+ - BoardController는 상속받은 UiUtils클래스의 showMessageWithRedirect메서드를 통해 메시지, 리다이렉트URI, HTTP요청메서드, 데이터객체를 model객체에 담는다.
+ - 지금은 register와 delete만 수정할 것이기 때문에 데이터객체 파라미터는 null로 전달한다.
+ - redirect한 message-redirect.html에서 alert창을 구성하여 화면을 출력한다.
+
 ## src21 - 게시글 삭제 처리
  - view.html에서 삭제하기 버튼을 누르면 idx값을 가지고 delete.do를 수행할 메서드를 컨트롤러에 작성한다(deleteBoard메서드).
  - view.html에 confirm함수를 이용하여 게시글 삭제 여부를 확인하는 코드를 작성한다.
