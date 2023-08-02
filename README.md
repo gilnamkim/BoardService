@@ -1,5 +1,10 @@
 # 새로운 게시판서비스
 
+## src20 - 게시글 조회 처리
+ - list.html로 띄운 boardList에서 게시글번호를 가지고 view.do를 수행할 openBoardDetail메서드를 작성한다.
+ - openBoardDetail메서드는 idx 파라미터값으로 board객체를 가져와서 저장한다음 model객체에 매핑한다.
+ - view.html을 생성하여 openBoardDetail에서 담아온 board를 렌더링하는 코드를 작성한다.
+
 ## src19 - 게시글 목록 처리
  - BoardController의 registerBoard메서드 리턴값인 redirectURL을 이용하여 리스트객체를 만들어 전달하는 openBoardList메서드를 작성
  - list.html을 생성하여 openBoardList에서 담아온 boardList를 렌더링하는 코드를 작성한다.
