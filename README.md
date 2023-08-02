@@ -1,5 +1,11 @@
 # 새로운 게시판서비스
 
+## src21 - 게시글 삭제 처리
+ - view.html에서 삭제하기 버튼을 누르면 idx값을 가지고 delete.do를 수행할 메서드를 컨트롤러에 작성한다(deleteBoard메서드).
+ - view.html에 confirm함수를 이용하여 게시글 삭제 여부를 확인하는 코드를 작성한다.
+ - confirm함수가 true일 경우 html변수에 폼을 생성하고 전달할 파라미터를 담아 폼을 append로 body태그안에 추가해 준다.
+ - dataForm.submit()함수로 body에 추가된 폼을 찾아 컨트롤러로 전달한다.
+
 ## src20 - 게시글 조회 처리
  - list.html로 띄운 boardList에서 게시글번호를 가지고 view.do를 수행할 openBoardDetail메서드를 작성한다.
  - openBoardDetail메서드는 idx 파라미터값으로 board객체를 가져와서 저장한다음 model객체에 매핑한다.
