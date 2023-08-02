@@ -1,5 +1,9 @@
 # 새로운 게시판서비스
 
+## src18 - 게시글 등록 처리
+ - write.html에 사용자로부터 입력받은 form 데이터를 javascript로 데이터유효성 검사 후 서버로 전달하는 코드 추가
+ - BoardController에서 post방식으로 전달받은 데이터를 처리하는 메서드 추가
+
 ## src17 - bootstrap 적용
  - header.html, body.html 작성
  - basic.html을 생성하여 th:fragment 속성을 사용하여 동적으로 처리
