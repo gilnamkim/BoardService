@@ -1,5 +1,18 @@
 # 새로운 게시판서비스
 
+## src25 - 페이징 처리를 위한 MVC영역 코드 변경
+ - com.boardSerivce.domain 패키지에 Criteria를 상속받아 CommonDTO 작성
+ - BoardDTO가 앞서 작성한 CommonDTO를 상속받도록 변경
+ - Criteria의 객체를 파라미터값으로 받아오거나 객체에 직접접근하는 코드를 마지막으로 상속받은 BoardDTO의 객체로 변경
+ - BoardMapper.xml 에서 LIMIT 변경
+ - BoardServiceImpl 클래스의 getBoardList메서드에서 paginationInfo의 객체를 만들어 페이지정보를 가져올 수 있도록 변경
+ - Criteria 클래스에 makeQueryStirng 메서드 작성, 페이지에 대한 정보를 URI로 만들어 리턴한다.
+ - common.html을 생성 후 list.html의 layout:fragment="paging" 의 코드를 변경
+ - list.html에 movePage함수 정의(script생성)
+ 
+## src24 - 페이징 정보 계산
+ - 전제 데이터 개수와 전체 페이지 개수를 계산하여 DB에서 필요한 개수만큼의 데이터만 가져온다
+ 
 ## src23 - 페이징 처리
  - 페이징은 사용자가 어떠한 데이터를 필요로 할 때 전체 데이터 중 일부를 보여주는 방식
  - 모든 데이터를 출력하면 페이지로딩 속도가 느려지고 가독성이 떨어지므로 페이징과 검색기능을 통해 해결

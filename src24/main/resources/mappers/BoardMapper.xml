@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper테그 : mapper 인터페이스의 메서드 매핑을 하기위한 경로지정 -->
+<mapper namespace="com.boardService.mapper.BoardMapper">
+
+	<!-- 여러 쿼리문에서 사용하기위해 boardColumns을 정의 -->
+	<!-- 이후 include로 가져다 쓸 수 있다(코드가 간결해 진다! -->
+	<sql id="boardColumns">
+			idx
+		,	title
+		,	content
+		,	writer
+		,	view_cnt
+		,	notice_yn
+		,	secret_yn
+		,	delete_yn
+		,	insert_time
+		,	update_time
+		,	delete_time		
+	</sql>
+	
+	<!-- public int insertBoard(BoardDTO params); 메서드를 수행할 쿼리문 -->
+	<!-- 파라미터 타입이 BoardDTO로 통일 -->
+	<insert id="insertBoard" parameterType="BoardDTO">
+		INSERT INTO board (
+			<include refid="boardColumns" />
+		) VALUES (
+				#{idx}
+			,	#{title}
+			,	#{content}
+			,	#{writer}
+			,	0
+			,	IFNULL(#{noticeYn}, 'N')
+			,	IFNULL(#{secretYn}, 'N')
+			,	'N'
+			,	NOW()
+			,	NULL
+			,	NULL
+		)
+	</insert>
+	
+	<!-- public BoardDTO selectBoardDetail(Long idx); 메서드를 수행할 쿼리문 -->
+	<!-- 쿼리의 실행결과를 BoardDTO타입으로 지정 -->
+	<!-- #{}은 파라미터로 받은 타입의 요소 -->
+	<select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
+		SELECT
+			<include refid="boardColumns" />
+		FROM
+			board
+		WHERE
+			delete_yn = 'N'
+		AND
+			idx = #{idx}
+	</select>
+	
+	<update id="updateBoard" parameterType="BoardDTO">
+		UPDATE
+			board
+		SET
+				update_time = NOW()
+			,	title = #{title}
+			,	content = #{content}
+			,	writer = #{writer}
+			,	notice_yn = IFNULL(#{noticeYn}, 'N')
+			,	secret_yn = IFNULL(#{secretYn}, 'N')
+		WHERE
+			idx = #{idx}
+	</update>
+	
+	<!-- 논리적 삭제(Logical Deletion) -->
+	<!-- 웹 어플리케이션의 경우 데이터를 완전히 소실시키는 delete보다 update를 사용한다 -->
+	<!-- 추후 삭제된 데이터의 이력을 복구가능한 시스템을 구축할 수 있으며, 중요한 데이터를 보존하는데 돔이 된다 -->
+	<!-- delete를 쓰는경우는 불필요한 데이터를 저장할 필요가 없거나 DB의 성능을 향상시키기 위해 사용한다 -->
+	<update id="deleteBoard" parameterType="long">
+		UPDATE
+			board
+		SET
+				delete_yn = 'Y'
+			,	delete_time = NOW()
+		WHERE
+			idx = #{idx}
+	</update>
+	
+	<select id="selectBoardList" parameterType="Criteria" resultType="BoardDTO">
+		SELECT
+			<include refid="boardColumns" />
+		FROM
+			board
+		WHERE
+			delete_yn = 'N'
+		<!-- ASC : 오름차순으로 정렬 -->
+		<!-- DESC : 내림차순으로 정렬 -->
+		ORDER BY
+			notice_yn ASC,
+			idx DESC,
+			insert_time DESC
+		<!-- LIMIT : 데이터를 원하는 만큼 가져오고 싶을때 사용 -->
+		LIMIT
+			#{startPage}, #{recordsPerPage}
+	</select>
+	
+	<select id="selectBoardTotalCount" parameterType="Criteria" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			board
+		WHERE
+			delete_yn = 'N'
+	</select>
+	
+</mapper>

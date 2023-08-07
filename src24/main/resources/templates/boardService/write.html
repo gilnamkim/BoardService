@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.zn/thymeleaf/layout" layout:decorate="boardService/layout/basic">
+	<th:block layout:fragment="title">
+		<title>This is a write page</title>
+	</th:block>
+	<!-- 페이지마다 content영역의 형태가 다르기때문에 fragment속성으로 구분 -->
+	<th:block layout:fragment="content">
+		<div class="card-content">
+			<!-- form태그로 사용자로부터 입력을 받고, 입력된 데이터를 서버로 제출 -->
+			<!-- th:action / 폼을 제출할 때 데이터를 처리할 서버의 URL주소, 서버쪽 /boardService/register.do URL을 수행하는 메서드에서 데이터 처리 -->
+			<!-- th:object / 폼 데이터가 바인딩 될 객체를 지정 -->
+			<!-- th:method / 폼 데이터가 서버로 제출될 때 사용할 HTTP메서드를 지정 get,post 방식이 있다 -->
+			<!-- onsubmit / 폼이 제출될 때 호출될 자바스크립트 함수 호출, 함수에서 true를 반환하면 폼을 서버로 제출-->
+			<form class="form-horizontal" th:action="@{/boardService/register.do}" th:object="${board}" method="post" onsubmit="return registerBoard(this)">
+				<input type="hidden" th:if="*{idx != null and idx > 0}" th:field="*{idx}" />
+				
+				<div class="form-group">
+					<label for="noticeYn" class="col-sm-2 control-label">공지글 설정</label>
+					<div class="col-sm-10" style="margin-top: 10px;">
+						<input type="checkbox" th:value="*{noticeYn}" id="noticeYn" name="noticeYn" th:checked="*{#strings.equals( noticeYn, 'Y')}" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="secretYn" class="col-sm-2 control-label">비밀글 설정</label>
+					<div class="col-sm-10" style="margin-top: 10px;">
+						<input type="checkbox" th:value="*{secretYn}" id="secretYn" name="secretYn" th:checked="*{#strings.equals( secretYn, 'Y')}" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="title" class="col-sm-2 control-label">제목</label>
+					<div class="col-sm-10">
+						<input type="text" th:field="*{title}" class="form-control" placeholder="제목을 입력해 주세요." />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label">이름</label>
+					<div class="col-sm-10">
+						<input type="text" th:field="*{writer}" class="form-control" placeholder="이름을 입력해 주세요." />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="title" class="col-sm-2 control-label">내용</label>
+					<div class="col-sm-10">
+						<textarea th:field="*{content}" class="form-control" placeholder="내용을 입력해 주세요."></textarea>
+					</div>
+				</div>
+				
+				<div class="btn_wrap text-center">
+					<a th:href="@{/boardService/list.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
+					<button type="submit" class="btn btn-primary waves-effect waves-light">저장하기</button>
+				</div>
+			</form>
+		</div>
+	</th:block>
+	
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			
+			function registerBoard(form) {
+				form.noticeYn.value = form.noticeYn.checked == false ? 'N' : 'Y';
+				form.secretYn.value = form.secretYn.checked == false ? 'N' : 'Y';
+				
+				var result = (
+					   isValid(form.title, "제목", null, null)
+					&& isValid(form.writer, "이름", null, null)
+					&& isValid(form.content, "내용", null, null)
+				);
+				if (result == false) {
+					return false;
+				}
+			}
+			
+			/*]]>*/
+		</script>
+	</th:block>
+</html>
